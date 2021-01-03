@@ -20,7 +20,7 @@ import java.net.URL;
  */
 @Slf4j
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @EnableOpenApi
 @ComponentScan("com.estoeban.blizzardwowdatatest")
 @EnableConfigurationProperties
