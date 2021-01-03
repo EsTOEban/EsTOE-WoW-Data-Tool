@@ -1,4 +1,7 @@
 spring:
+  security:
+    user:
+      name: admin
   logging:
     level:
       org.springframework: WARN
@@ -9,9 +12,10 @@ oauth2:
   token-url: https://us.battle.net/oauth/token
   base-url: https://us.api.blizzard.com
   base-image-url: https://render-us.worldofwarcraft.com/character/
-
-# Seems to be a good balance of least amount of artifacting and good compression for this library
-compression-quality: .925f
+  clientId: CLIENT_ID_CHANGE_ME
+  clientSecret: CLIENT_ID_CHANGE_ME
+  # Seems to be a good balance of least amount of artifacting and good compression for this library
+  compression-quality: .925f
 
 image-layout:
   total-width: 720

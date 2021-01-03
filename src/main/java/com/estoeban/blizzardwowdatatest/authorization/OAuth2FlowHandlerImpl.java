@@ -1,7 +1,6 @@
 package com.estoeban.blizzardwowdatatest.authorization;
 
 import com.estoeban.blizzardwowdatatest.config.AppConfig;
-import com.estoeban.blizzardwowdatatest.config.EnvConfig;
 import com.estoeban.blizzardwowdatatest.models.TokenResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
@@ -27,8 +26,6 @@ public class OAuth2FlowHandlerImpl implements OAuth2FlowHandler {
     @Autowired
     private AppConfig appConfig;
     @Autowired
-    private EnvConfig envConfig;
-    @Autowired
     private ObjectMapper objectMapper;
 
     // To allow testing of the URL/Connection
@@ -48,7 +45,7 @@ public class OAuth2FlowHandlerImpl implements OAuth2FlowHandler {
             log.trace("---");
             log.trace("Fetching/Creating token.");
 
-            String encodedCredentials = Base64.getEncoder().encodeToString(String.format("%s:%s", envConfig.getClientId(), envConfig.getClientSecret()).getBytes(appConfig.getEncoding()));
+            String encodedCredentials = Base64.getEncoder().encodeToString(String.format("%s:%s", appConfig.getClientId(), appConfig.getClientSecret()).getBytes(appConfig.getEncoding()));
 
             // ------------------------------------------------- Allows testing/mocking of the URL connection object
             HttpURLConnection con = null;
