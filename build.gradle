@@ -26,6 +26,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'net.imagej:ij:1.52h'
+    implementation 'com.google.guava:guava:27.0-jre'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
