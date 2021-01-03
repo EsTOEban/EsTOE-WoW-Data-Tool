@@ -4,8 +4,11 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
 import javax.annotation.PostConstruct;
 import java.net.URL;
@@ -17,6 +20,9 @@ import java.net.URL;
  */
 @Slf4j
 @Configuration
+@EnableWebMvc
+@EnableOpenApi
+@ComponentScan("com.estoeban.blizzardwowdatatest")
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "oauth2")
 @Data
