@@ -57,10 +57,10 @@ public class ApiCrawlerImpl implements ApiCrawler {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        if(sendInHeader){
+        if(sendInHeader) {
             log.trace(String.format("Sending token as header 'Authorization: Bearer %s'.", token));
             headers.set("Authorization", String.format("Bearer %s", token));
-        }else{
+        } else {
             log.trace(String.format("Sending token %s as parameter access_token.", token));
             uriBuilder.queryParam("access_token", token);
         }
