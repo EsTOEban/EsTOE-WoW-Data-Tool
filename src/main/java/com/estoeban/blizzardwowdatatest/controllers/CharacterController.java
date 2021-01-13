@@ -4,7 +4,10 @@ import com.estoeban.blizzardwowdatatest.config.AppConfig;
 import com.estoeban.blizzardwowdatatest.models.Character;
 import com.estoeban.blizzardwowdatatest.service.SignatureImageService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.connector.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,20 +36,33 @@ public class CharacterController {
     private final AppConfig appConfig;
     private final SignatureImageService signatureImageService;
 
+    @Autowired
     CharacterController(SignatureImageService signatureImageService, AppConfig appConfig) {
         this.signatureImageService = signatureImageService;
         this.appConfig = appConfig;
     }
 
-    @GetMapping("/{characterName}")
-    public Character getCharacter(@PathVariable String characterName) {
+    @GetMapping()
+    public ResponseEntity<Character> getCharacter(
+        @RequestParam String characterName,
+        @RequestParam String realmName
+    ) {
+        Character character = new Character();
+        return ResponseEntity.ok(character);
+    }
+
+    @GetMapping("/pvp")
+    public Character getCharacterPvpInfo(
+            @RequestParam String characterName,
+            @RequestParam String realmName
+        ) {
         Character character = new Character();
         character.setName(characterName);
         return character;
     }
 
-    @GetMapping(path = "/signature", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
+    @GetMapping(path = "/signature", produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getSignatureImage(
             @RequestParam(required = true) final String characterName,
             @RequestParam(required = true) final String realmName

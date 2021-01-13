@@ -24,13 +24,18 @@ import java.util.Map;
 @Service
 @Log4j2
 public class ApiCrawlerImpl implements ApiCrawler {
-    @Autowired
-    private OAuth2FlowHandler oAuth2FlowHandler;
+    private final OAuth2FlowHandler oAuth2FlowHandler;
+
+    private final AppConfig appConfig;
+
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Autowired
-    private AppConfig appConfig;
-
-    private RestTemplate restTemplate = new RestTemplate();
+    public ApiCrawlerImpl(OAuth2FlowHandler oAuth2FlowHandler,
+        AppConfig appConfig) {
+        this.oAuth2FlowHandler = oAuth2FlowHandler;
+        this.appConfig = appConfig;
+    }
 
     /**
      * {@inheritDoc}
@@ -71,7 +76,7 @@ public class ApiCrawlerImpl implements ApiCrawler {
 
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
-        log.trace(String.format("Performing %s request to %s using token %s", HttpMethod.GET, uri, token));
+        log.info(String.format("Performing %s request to %s using token %s", HttpMethod.GET, uri, token));
 
         ResponseEntity<T> result = restTemplate.exchange(uri, HttpMethod.GET, entity, klazz);
         log.trace(String.format("Result status: %s", result.getStatusCodeValue()));

@@ -125,7 +125,7 @@ public class SignatureImageServiceImpl implements SignatureImageService {
         params.put("fields", "guild,items");
         params.put("locale", "en_US");
 
-        CharacterItemsGuild characterItemsResult = getDataForUrl(String.format("/wow/character/%s/%s", realmName.toLowerCase(), characterName
+        CharacterItemsGuild characterItemsResult = getDataForUrl(String.format("/profile/wow/character/%s/%s", realmName.toLowerCase(), characterName
                 .toLowerCase()), params, CharacterItemsGuild.class);
 
         ClassName className = getClassName(characterItemsResult.getClassId());

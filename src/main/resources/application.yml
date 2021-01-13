@@ -12,8 +12,8 @@ oauth2:
   token-url: https://us.battle.net/oauth/token
   base-url: https://us.api.blizzard.com
   base-image-url: https://render-us.worldofwarcraft.com/character/
-  clientId: CLIENT_ID_CHANGE_ME
-  clientSecret: CLIENT_ID_CHANGE_ME
+  clientId: d9bfad06b2b640b9b113e645b155a7a9
+  clientSecret: 0vzkIfRfYNhh7HBdU338Q78WaFRE383U
   # Seems to be a good balance of least amount of artifacting and good compression for this library
   compression-quality: .925f
 
