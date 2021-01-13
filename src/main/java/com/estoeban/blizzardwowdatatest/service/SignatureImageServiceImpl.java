@@ -164,8 +164,8 @@ public class SignatureImageServiceImpl implements SignatureImageService {
                 String.format(
                         "%s?alt=/wow/static/images/2d/avatar/%s-%s.jpg",
                         characterItemsGuild.getThumbnail(),
-                        characterItemsGuild.getRace(),
-                        characterItemsGuild.getGender()
+                        characterItemsGuild.getRace()
+//                        characterItemsGuild.getGender()
                 )
                       .replace("avatar.jpg", "inset.jpg") // Let's use the inset image, not the avatar
         );

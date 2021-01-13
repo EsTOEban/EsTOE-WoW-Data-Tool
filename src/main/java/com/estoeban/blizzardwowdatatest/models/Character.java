@@ -19,7 +19,7 @@ public class Character {
     private Integer classId;
 
     private Integer race;
-    private Integer gender;
+//    private Integer gender;
     private Integer level;
     private Integer achievementPoints;
     private String thumbnail;

@@ -29,12 +29,11 @@ public class WowCharacterInformationServiceImpl implements WowCharacterInformati
         throws IOException, URISyntaxException {
 
         Map<String, String> params = new HashMap<>();
-        params.put("fields", "guild,items");
+        params.put("namespace", "profile-us");
         params.put("locale", "en_US");
 
-        Character characterResult = getDataForUrl(String.format("/profile/wow/character/%s/%s", realmName.toLowerCase(), characterName
-            .toLowerCase()), params, CharacterItemsGuild.class);
-        return null;
+        return getDataForUrl(String.format("/profile/wow/character/%s/%s", realmName.toLowerCase(), characterName
+            .toLowerCase()), params, Character.class);
     }
 
     private <T> T getDataForUrl(final String path, final Map<String, String> params, final Class<T> klazz) throws

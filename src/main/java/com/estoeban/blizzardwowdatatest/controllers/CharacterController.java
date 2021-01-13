@@ -3,13 +3,13 @@ package com.estoeban.blizzardwowdatatest.controllers;
 import com.estoeban.blizzardwowdatatest.config.AppConfig;
 import com.estoeban.blizzardwowdatatest.models.Character;
 import com.estoeban.blizzardwowdatatest.service.SignatureImageService;
+import com.estoeban.blizzardwowdatatest.service.WowCharacterInformationService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,20 +35,31 @@ public class CharacterController {
 
     private final AppConfig appConfig;
     private final SignatureImageService signatureImageService;
+    private final WowCharacterInformationService wowCharacterInformationService;
 
     @Autowired
-    CharacterController(SignatureImageService signatureImageService, AppConfig appConfig) {
+    CharacterController(SignatureImageService signatureImageService, AppConfig appConfig,
+        WowCharacterInformationService wowCharacterInformationService) {
         this.signatureImageService = signatureImageService;
         this.appConfig = appConfig;
+        this.wowCharacterInformationService = wowCharacterInformationService;
     }
 
     @GetMapping()
     public ResponseEntity<Character> getCharacter(
         @RequestParam String characterName,
         @RequestParam String realmName
-    ) {
+    ) throws IOException, URISyntaxException {
         Character character = new Character();
-        return ResponseEntity.ok(character);
+        HttpStatus httpStatus = HttpStatus.OK;
+
+        try {
+            character = wowCharacterInformationService.getCharacterInformation(characterName, realmName);
+        } catch (Exception e) {
+            httpStatus = HttpStatus.NO_CONTENT;
+        }
+
+        return new ResponseEntity<>(character, httpStatus);
     }
 
     @GetMapping("/pvp")
