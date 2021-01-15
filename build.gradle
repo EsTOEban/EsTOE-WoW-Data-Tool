@@ -16,6 +16,9 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        url "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/release"
+    }
 }
 
 dependencies {
@@ -28,10 +31,15 @@ dependencies {
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'net.imagej:ij:1.52h'
     implementation 'com.google.guava:guava:27.0-jre'
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.64'
+    implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
+    implementation 'junit:junit:4.12'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.amazonaws:DynamoDBLocal:1.11.0'
+
 }
 
 test {
