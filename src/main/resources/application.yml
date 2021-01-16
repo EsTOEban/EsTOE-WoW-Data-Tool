@@ -7,13 +7,6 @@ spring:
       org.springframework: WARN
       com.estoeban.blizzardwowdatatest: INFO
 
-amazon:
-  aws:
-    accesskey: key
-    secretkey: key2
-  dynamodb:
-    endpoint: http://localhost:8000
-
 oauth2:
   encoding: UTF-8
   token-url: https://us.battle.net/oauth/token
