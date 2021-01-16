@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 public class CharacterPvpInformation {
 
     private String name;
+    private String realm;
     private String covenant;
     private String twosRating;
     private String threesRating;

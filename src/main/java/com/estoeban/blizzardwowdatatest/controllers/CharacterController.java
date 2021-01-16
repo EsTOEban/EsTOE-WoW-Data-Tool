@@ -2,6 +2,7 @@ package com.estoeban.blizzardwowdatatest.controllers;
 
 import com.estoeban.blizzardwowdatatest.config.AppConfig;
 import com.estoeban.blizzardwowdatatest.models.Character;
+import com.estoeban.blizzardwowdatatest.models.CharacterPvpInformation;
 import com.estoeban.blizzardwowdatatest.service.WowCharacterInformationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +51,11 @@ public class CharacterController {
     }
 
     @GetMapping("/pvp")
-    public Character getCharacterPvpInfo(
+    public CharacterPvpInformation getCharacterPvpInfo(
             @RequestParam String characterName,
             @RequestParam String realmName
         ) {
-        Character character = new Character();
+        CharacterPvpInformation character = new CharacterPvpInformation();
         character.setName(characterName);
         return character;
     }

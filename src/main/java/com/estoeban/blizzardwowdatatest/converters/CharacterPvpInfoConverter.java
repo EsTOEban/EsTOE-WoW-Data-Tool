@@ -6,6 +6,7 @@ import com.estoeban.blizzardwowdatatest.repositories.CharacterInfo;
 public abstract class CharacterPvpInfoConverter {
 
     private CharacterInfo convertToEntity(CharacterPvpInformation characterPvpInformation) {
-        CharacterInfo characterInfo
+//        CharacterInfo characterInfo = new CharacterInfo();
+        return new CharacterInfo();
     }
 }

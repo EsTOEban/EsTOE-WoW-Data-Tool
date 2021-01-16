@@ -14,7 +14,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -32,9 +31,6 @@ public class CharacterInfoRepositoryTest {
     @Autowired
     CharacterInfoRepository repository;
 
-    private static final String EXPECTED_COST = "20";
-    private static final String EXPECTED_PRICE = "50";
-
     @After
     public void tearDown() throws Exception {
         repository.deleteAll();
@@ -47,7 +43,7 @@ public class CharacterInfoRepositoryTest {
         character.setLevel(60);
 
         CharacterInfo characterInfo = new CharacterInfo();
-        characterInfo.setCharacter(character);
+//        characterInfo.setCharacter(character);
     }
 
     @Test
@@ -57,6 +53,6 @@ public class CharacterInfoRepositoryTest {
         List<CharacterInfo> result = (List<CharacterInfo>) repository.findAll();
 
         assertThat(result.size(), is(greaterThan(0)));
-        assertThat(result.get(0).getCharacter(), is(equalTo(characterInfo.getCharacter())));
+//        assertThat(result.get(0).getCharacter(), is(equalTo(characterInfo.getCharacter())));
     }
 }

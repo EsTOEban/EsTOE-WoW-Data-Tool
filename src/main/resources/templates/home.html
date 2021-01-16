@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  </head>
+  <body>
+    <form action="#" method="post" th:action="@{/home}" th:object="${characterNameRealmDTO}">
+      <table border="0">
+        <tr>
+          <label for="name">Character Name</label>
+          <input id="name" name="name" th:value="*{name}" type="text"/>
+        </tr>
+        </br>
+        <tr>
+          <label for="realm">Server/Realm</label>
+          <input id="realm" name="realm" th:value="*{realm}" type="text"/>
+        </tr>
+        </br>
+        <tr>
+          <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
