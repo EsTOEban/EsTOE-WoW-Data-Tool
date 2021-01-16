@@ -1,18 +1,36 @@
 package com.estoeban.blizzardwowdatatest.repositories;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Data
-@DynamoDBTable(tableName = "CharacterInfo")
+@Entity
 public class CharacterInfo {
 
-    @DynamoDBHashKey
-    @DynamoDBAttribute
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @DynamoDBAttribute
-    private Character character;
+    private String name;
+    private String covenant;
+    private String twosRating;
+    private String threesRating;
+    private String rbgRating;
+
+    @Override
+    public String toString() {
+        return "CharacterInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", covenant='" + covenant + '\'' +
+                ", twosRating='" + twosRating + '\'' +
+                ", threesRating='" + threesRating + '\'' +
+                ", rbgRating='" + rbgRating + '\'' +
+                '}';
+    }
 }
