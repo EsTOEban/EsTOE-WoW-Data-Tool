@@ -1,14 +1,19 @@
 package com.estoeban.blizzardwowdatatest.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.extern.log4j.Log4j2;
+import lombok.RequiredArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class CharacterPvpInformation {
 
-    @NonNull private String name;
-    @NonNull private String realm;
+    @NonNull
+    private String name;
+    @NonNull
+    private String realm;
     private String covenant;
     private String twosRating;
     private String threesRating;
