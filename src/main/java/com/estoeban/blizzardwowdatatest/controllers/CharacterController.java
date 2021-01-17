@@ -26,8 +26,8 @@ public class CharacterController {
 
     @Autowired
     CharacterController(
-            AppConfig appConfig,
-            WowCharacterInformationService wowCharacterInformationService) {
+        AppConfig appConfig,
+        WowCharacterInformationService wowCharacterInformationService) {
         this.appConfig = appConfig;
         this.wowCharacterInformationService = wowCharacterInformationService;
     }
@@ -51,12 +51,11 @@ public class CharacterController {
     }
 
     @GetMapping("/pvp")
-    public CharacterPvpInformation getCharacterPvpInfo(
-            @RequestParam String characterName,
-            @RequestParam String realmName
-        ) {
-        CharacterPvpInformation character = new CharacterPvpInformation();
-        character.setName(characterName);
-        return character;
+    public ResponseEntity<CharacterPvpInformation> getCharacterPvpInfo(
+        @RequestParam String characterName,
+        @RequestParam String realmName
+    ) throws IOException, URISyntaxException {
+        return new ResponseEntity<>(wowCharacterInformationService.getCharacterPvpInformation(characterName, realmName),
+            HttpStatus.OK);
     }
 }

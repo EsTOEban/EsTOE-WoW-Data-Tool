@@ -1,5 +1,6 @@
 package com.estoeban.blizzardwowdatatest.models;
 
+import com.estoeban.blizzardwowdatatest.models.character.CharacterCovenantProgress;
 import com.estoeban.blizzardwowdatatest.models.character.Race;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -26,6 +27,9 @@ public class Character {
     @JsonProperty(value="calcClass")
     private String localizedClassName;
     private Integer totalHonorableKills;
+
+    @JsonProperty(value = "covenant_progress")
+    private CharacterCovenantProgress covenantProgress;
 
     //    private Integer faction;
     private Gender gender;
